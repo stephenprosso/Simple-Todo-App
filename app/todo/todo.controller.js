@@ -53,13 +53,26 @@
                 return 3;
             }
         }
+
+        vm.GetPriorityText = function GetPriorityText (priority) {
+            switch (priority) {
+                case 1:
+                    return "high";
+                case 2:
+                    return "Medium";
+                case 3:
+                    return "High";
+                default:
+                    return "";
+            }
+        }
         vm.remove = function remove(index, todo) {
-          console.log(todo);
+            console.log(todo);
             todoFactory
-            .remove(todo.todoItemID)
-            .then (function(data) {
-              vm.todos.splice(index, 1);
-            });
+                .remove(todo.todoItemID)
+                .then(function(data) {
+                    vm.todos.splice(index, 1);
+                });
 
         }
     }

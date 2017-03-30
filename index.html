@@ -55,7 +55,7 @@
             <tr ng-repeat="item in todoCtrl.todos |orderBy: todoCtrl.sortField">
                 <td>{{ $index +1}}</td>
                 <td>{{ item.text }}</td>
-                <td>{{ item.priority }}</td>
+                <td>{{ todoCtrl.GetPriorityText(item.priority)}}</td>
                 <td><img src="app/images/delete.png" class="icon" ng-click="todoCtrl.remove($index, item)"></td>
             </tr>
         </table>
