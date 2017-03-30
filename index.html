@@ -24,13 +24,13 @@
         <div class="col-md-8">
             <div class="form-group">
                 <label>Add Task</label><br>
-                <input type="text" class="form-control" ng-model="todoCtrl.newTodo.text"></input>
+                <input type="text" class="form-control" ng-model="todoCtrl.text"></input>
             </div>
             <br><br>
             <div class="form-group">
                 <label>Priority</label><br>
                 <!-- <value> as <text> for <current-item> in <collection>-->
-                <select ng-model="todoCtrl.newTodo.priority" class="form-control" ng-options="priority as priority.text for priority in todoCtrl.priorities"></select>
+                <select ng-model="todoCtrl.selectedPriority" class="form-control" ng-options="priority for priority in todoCtrl.priorities"></select>
                 <button align="center" class="btn btn-primary form-control" type="button" ng-click="todoCtrl.click()">Add Item</button>
             </div>
             <div class="col-md-2">
@@ -46,7 +46,7 @@
     <button class="btn btn-primary" type="button" ng-click="todoCtrl.sortField = '-priority.number'">Hi Priority</button>
     <ul align="center" class="list-group">
         <li ng-repeat="item in todoCtrl.todos |orderBy: todoCtrl.sortField" class={{item.priority.style}}>
-            {{item.text}}-{{item.priority.text}}
+            {{item.text}}-{{item.priority}}
         </li>
     </ul>
   </div>
@@ -60,6 +60,7 @@
     <script src="app/app.module.js"></script>
     <script src="app/todo/todo.controller.js"></script>
     <!-- endinject -->
+    <script src="app/todo/todo.factory.js"></script>
 </body>
 
 </html>

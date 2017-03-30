@@ -9,33 +9,42 @@
 
     /* @ngInject */
     function TodoController(todoFactory) {
+
+        var vm = this;
+
         vm.sortField = " ";
-
-        vm.todos = [
-
+        vm.todos = [];
+        vm.priorities = ['High',
+            'Medium',
+            'Low'
         ];
-        vm.priorities = [{
-                text: 'High',
-                number: 3,
-                style: 'list-group-item-danger'
-            },
-            {
-                text: 'Medium',
-                number: 2,
-                style: 'list-group-item-warning'
-            },
-            {
-                text: 'low',
-                number: 1,
-                style: 'list-group-item-success'
-            }
-        ];
+
+        vm.selectedPriotity = vm.priorities[0];
+
+
         vm.click = function click() {
-            vm.todos.push(vm.newTodo);
-            vm.newTodo = {};
-            console.log(vm.newTodo);
-        }
 
+            todoFactory
+                .create({
+                    "text": vm.text,
+                    "priority": GetPriorityNumber(vm.selectedPriority)
+                })
+                .then(function(data) {
+                    vm.todos.push(data);
+                });
+
+            function GetPriorityNumber(priority) {
+                if (priority === "High") {
+                    return 1;
+                }
+                if (priority === "Medium") {
+                    return 2;
+                }
+                else {
+                    return 3;
+                }
+            }
+        }
     }
 
 

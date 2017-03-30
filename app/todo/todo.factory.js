@@ -5,7 +5,7 @@
             .module('app')
             .factory('todoFactory', todoFactory);
 
-        Controller.$inject = ['$http'];
+        todoFactory.$inject = ['$http'];
         /* @ngInject */
         function todoFactory($http) {
             var service = {
@@ -54,4 +54,5 @@
                         return response.data;
                     });
             }
-        })();
+        }
+      })();
