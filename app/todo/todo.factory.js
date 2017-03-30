@@ -36,7 +36,7 @@
 
             function update(id, todoItem) {
                 return $http
-                    .put('http://localhost:49828/api/TodoItems' + id, todoItem);
+                    .put('http://localhost:49828/api/TodoItems/' + id, todoItem);
             }
 
             function create(todoItem) {
@@ -49,7 +49,7 @@
 
             function remove(id) {
                 return $http
-                    .delete('http://localhost:49828/api/TodoItems' + id)
+                    .delete('http://localhost:49828/api/TodoItems/' + id)
                     .then(function(response) {
                         return response.data;
                     });

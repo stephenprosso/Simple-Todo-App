@@ -3,16 +3,17 @@
 
 <head>
     <!-- bower:css -->
+    <link rel="stylesheet" href="app/style.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
 
     <!-- inject:css -->
     <!-- endinject -->
     <meta charset="utf-8">
-    <title></title>
+    <title>TodoAPP</title>
 </head>
-<div class="jumbotron" align="center">
-    <h1>List of Honey-Do's</h1>
+<div align="center">
+    <h1>Todo List App</h1>
 </div>
 <hr>
 
@@ -41,15 +42,30 @@
     <pre> {{todoCtrl.todos | json}}</pre> -->
     <hr>
     <div align="center">
-    <button class="btn btn-primary" type="button" ng-click="todoCtrl.sortField = 'text'">order by Name</button>
-    <button class="btn btn-primary" type="button" ng-click="todoCtrl.sortField = 'priority.number'">Low Priority</button>
-    <button class="btn btn-primary" type="button" ng-click="todoCtrl.sortField = '-priority.number'">Hi Priority</button>
-    <ul align="center" class="list-group">
+        <button class="btn btn-primary" type="button" ng-click="todoCtrl.sortField = 'text'">order by Name</button>
+        <button class="btn btn-primary" type="button" ng-click="todoCtrl.sortField = '-priority'">Low Priority</button>
+        <button class="btn btn-primary" type="button" ng-click="todoCtrl.sortField = 'priority'">Hi Priority</button>
+        <table class="table table-striped">
+            <tr>
+                <th></th>
+                <th> Thing To Do!</th>
+                <th> Priority Level</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="item in todoCtrl.todos |orderBy: todoCtrl.sortField">
+                <td>{{ $index +1}}</td>
+                <td>{{ item.text }}</td>
+                <td>{{ item.priority }}</td>
+                <td><img src="app/images/delete.png" class="icon" ng-click="todoCtrl.remove($index, item)"></td>
+            </tr>
+        </table>
+
+        <!-- <ul align="center" class="list-group">
         <li ng-repeat="item in todoCtrl.todos |orderBy: todoCtrl.sortField" class={{item.priority.style}}>
             {{item.text}}-{{item.priority}}
         </li>
-    </ul>
-  </div>
+    </ul> -->
+    </div>
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -61,6 +77,7 @@
     <script src="app/todo/todo.controller.js"></script>
     <!-- endinject -->
     <script src="app/todo/todo.factory.js"></script>
+
 </body>
 
 </html>
