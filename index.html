@@ -25,15 +25,15 @@
         <div class="form-group col-md-3">
             <input placeholder="Add Something To Do!" type="text" class="form-control" ng-model="todoCtrl.text"></input>
         </div>
-        <div class="col-md-2" align="right">
-          <label>Priority</label>
+        <div class="col-md-1" align="right">
+            <label>Priority</label>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-2">
             <!-- <value> as <text> for <current-item> in <collection>-->
             <select ng-model="todoCtrl.selectedPriority" class="form-control" ng-options="priority for priority in todoCtrl.priorities"></select>
         </div>
         <div class="form-group col-md-2">
-            <button align="center" class="btn btn-link form-control" type="button" ng-click="todoCtrl.click()">Add Item</button>
+            <button align="center" class="btn btn-link form-control" type="button" ng-click="todoCtrl.click()">Add Todo</button>
         </div>
         <div class="col-md-2">
         </div>
@@ -41,26 +41,40 @@
     <!-- <pre>{{todoCtrl.newTodo | json}}</pre>
     <pre> {{todoCtrl.todos | json}}</pre> -->
     <hr>
-    <div align="right">
+    <div class="row">
+      <div class="col-md-7">
+      </div>
+    <div class="col-md-4" align="right">
         <button class="btn btn-link" type="button" ng-click="todoCtrl.sortField = 'text'">order by Name</button>
         <button class="btn btn-link" type="button" ng-click="todoCtrl.sortField = '-priority'">Low Priority</button>
         <button class="btn btn-link" type="button" ng-click="todoCtrl.sortField = 'priority'">Hi Priority</button>
-        <table class="table table-striped">
-            <tr>
-                <th></th>
-                <th> Thing To Do!</th>
-                <th> Priority Level</th>
-                <th></th>
-            </tr>
-            <tr ng-repeat="item in todoCtrl.todos |orderBy: todoCtrl.sortField">
-                <td>{{ $index +1}}</td>
-                <td>{{ item.text }}</td>
-                <td>{{ todoCtrl.GetPriorityText(item.priority)}}</td>
-                <td><img src="app/images/delete.png" class="icon" ng-click="todoCtrl.remove($index, item)"></td>
-            </tr>
-        </table>
-
-        <!-- <ul align="center" class="list-group">
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+  <div id="tableContainer" class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <table class="table table-striped">
+        <tr>
+            <th></th>
+            <th> Thing To Do!</th>
+            <th> Priority Level</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="item in todoCtrl.todos |orderBy: todoCtrl.sortField">
+            <td>{{ $index +1}}</td>
+            <td>{{ item.text }}</td>
+            <td>{{ todoCtrl.GetPriorityText(item.priority)}}</td>
+            <td><img src="app/images/delete.png" class="icon" ng-click="todoCtrl.remove($index, item)"></td>
+        </tr>
+    </table>
+  </div>
+  <div class="cold-md-1">
+  </div>
+</div>
+    <!-- <ul align="center" class="list-group">
         <li ng-repeat="item in todoCtrl.todos |orderBy: todoCtrl.sortField" class={{item.priority.style}}>
             {{item.text}}-{{item.priority}}
         </li>
