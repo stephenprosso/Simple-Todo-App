@@ -22,20 +22,20 @@
     <div id="container" class="row">
         <div class="col-md-2">
         </div>
-        <div class="col-md-8">
-            <div class="form-group">
-                <label>Add Task</label><br>
-                <input type="text" class="form-control" ng-model="todoCtrl.text"></input>
-            </div>
-            <br><br>
-            <div class="form-group">
-                <label>Priority</label><br>
-                <!-- <value> as <text> for <current-item> in <collection>-->
-                <select ng-model="todoCtrl.selectedPriority" class="form-control" ng-options="priority for priority in todoCtrl.priorities"></select>
-                <button align="center" class="btn btn-primary form-control" type="button" ng-click="todoCtrl.click()">Add Item</button>
-            </div>
-            <div class="col-md-2">
-            </div>
+        <div class="form-group col-md-3">
+            <input placeholder="Add Something To Do!" type="text" class="form-control" ng-model="todoCtrl.text"></input>
+        </div>
+        <div class="col-md-2" align="right">
+          <label>Priority</label>
+        </div>
+        <div class="col-md-1">
+            <!-- <value> as <text> for <current-item> in <collection>-->
+            <select ng-model="todoCtrl.selectedPriority" class="form-control" ng-options="priority for priority in todoCtrl.priorities"></select>
+        </div>
+        <div class="form-group col-md-2">
+            <button align="center" class="btn btn-primary form-control" type="button" ng-click="todoCtrl.click()">Add Item</button>
+        </div>
+        <div class="col-md-2">
         </div>
     </div>
     <!-- <pre>{{todoCtrl.newTodo | json}}</pre>
